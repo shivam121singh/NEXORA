@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import shivamImage from "./shivam.png";
+
 export default function About() {
   const techCategories = [
     {
@@ -9,7 +10,7 @@ export default function About() {
     },
     {
       title: "Frontend & UI",
-      skills: ["React.js", "Redux", "Tailwind CSS"],
+      skills: ["React.js", "Redux", "Tailwind CSS", "Material UI"],
     },
     {
       title: "Backend & Database",
@@ -24,11 +25,11 @@ export default function About() {
   return (
     <div className="aboutWrapper">
       <div className="aboutContainer">
-        {/* Left Column: Image, Name, Quick Links */}
+        {/* Left Column: Profile Card */}
         <div className="aboutSidebar">
           <div className="profileImageContainer">
             <img
-  src={shivamImage}
+              src={shivamImage}
               alt="Shivam Singh"
               className="profileImage"
             />
@@ -36,41 +37,35 @@ export default function About() {
 
           <h1 className="profileName">Shivam Singh</h1>
           <h3 className="profileTitle">Full Stack MERN Developer</h3>
-
           <p className="sidebarLocation">📍 Greater Noida, India</p>
 
           <div className="aboutActions">
             <a
-              href="https://github.com/YOUR_GITHUB"
+              href="https://github.com/shivam121singh"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btnPrimary"
             >
               GitHub
             </a>
+           <a
+  href="https://www.linkedin.com/in/shivam-singh-726997362"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn btnSecondary"
+>
+  LinkedIn
+</a>
             <a
-              href="https://linkedin.com/in/YOUR_LINKEDIN"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btnSecondary"
+              href="mailto:shivamsingh933434@gmail.com"
+              className="btn btnOutline"
             >
-              LinkedIn
-            </a>
-             <a
-              href="https://linkedin.com/in/YOUR_LINKEDIN"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btnSecondary"
-            >
-              Portfolio
-            </a>
-            <a href="mailto:yourmail@gmail.com" className="btn btnOutline">
               Email Me
             </a>
           </div>
         </div>
 
-        {/* Right Column: Bio, Stats, Categorized Tech Stack */}
+        {/* Right Column: Bio, Metrics, Skills */}
         <div className="aboutContent">
           <div className="bioSection">
             <h2 className="sectionHeading">About Me</h2>
@@ -82,11 +77,11 @@ export default function About() {
             <p className="bioText">
               I specialize in building real-time applications using the MERN stack,
               WebRTC, and Socket.io—ranging from live video conferencing and interactive 
-              chat systems to robust e-commerce architectures.
+              chat systems to robust web platforms.
             </p>
           </div>
 
-          {/* Quick Metrics */}
+          {/* Key Metrics */}
           <div className="statsGrid">
             <div className="statCard">
               <span className="statNumber">2+</span>
@@ -102,7 +97,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Skills Breakdown */}
+          {/* Technical Expertise */}
           <div className="skillsSection">
             <h2 className="sectionHeading">Technical Expertise</h2>
             <div className="skillsGrid">
@@ -120,6 +115,7 @@ export default function About() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </div>

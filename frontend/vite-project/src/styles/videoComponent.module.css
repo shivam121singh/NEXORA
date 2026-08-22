@@ -1,193 +1,149 @@
-/* .meetVideoContainer {
-    position: relative;
-    height: 100vh;
-    background: rgb(1, 4, 48);
-}
+/* =========================================================
+   AUTO-WRAPPING VIDEO GRID (ROWS & COLUMNS FOR LAPTOP & MOBILE)
+========================================================= */
 
-.meetUserVideo {
-    position: absolute;
-    bottom: 10vh;
-    height: 20vh;
-    width: auto;
-    left: 0;
-    border-radius: 20px;
-}
-
-.buttonContainers {
-    position: absolute;
-    width: 100vw;
-    bottom: 0;
-    text-align: center;
-}
-
-.buttonContainers svg {
-    font-size: 3rem;
-}
-
-.conferenceView { 
-
-    display: flex;
-    
-    padding: 10px;
-    gap: 10px;
-}
-
-.conferenceView  video {
-    width: 40vw;
-    height: 20vh;
-    min-width: 30vw;
-    border-radius: 10px;
-}
-
-.chatRoom {
-    position: absolute;
-    height: 90vh;
-    right: 0;
-    background: white;
-    border-radius: 10px;
-    width: 30vw;
-    padding-inline: 20px;
-}
-
-.chatContainer {
-    position: relative;
-    height: 100%;
-}
-
-
-.chattingArea {
-    position: absolute;
-    bottom: 0;
-} */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* 1. Main Page Container */
 .meetVideoContainer {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  background: rgb(1, 4, 48);
-  overflow: hidden;
-  display: flex;
-}
-
-/* --- VIDEO CONTAINER SECTION --- */
-.conferenceArea {
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* Leaves 32vw space so videos NEVER reach or go behind the Chatbox */
-  width: calc(100vw - 32vw);
-  height: calc(100vh - 90px); /* Leaves space for bottom control bar */
-  padding: 24px;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
-
-/* Flexbox Layout: Wraps to next row when space runs out */
-.conferenceView {
+  position: relative !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #060b26 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   display: flex !important;
+  flex-direction: row !important;
   flex-wrap: wrap !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   align-content: flex-start !important;
   gap: 16px !important;
-  width: 100% !important;
+  padding: 20px 20px 90px 20px !important;
+  box-sizing: border-box !important;
 }
 
-/* Equal, Uniform Dimensions for ALL Camera Frames */
-.conferenceView video,
+/* 2. YOUR VIDEO BOX (Exact same size as peers) */
 .meetUserVideo {
-  position: static !important;
-  /* Fixed width & height so every participant card looks identical */
-  flex: 0 0 260px !important;
-  width: 260px !important;
-  height: 170px !important;
+  width: 340px !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
   object-fit: cover !important;
   border-radius: 12px !important;
   background-color: #000000 !important;
-  border: 2px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  border: 2px solid #ff9839 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  transform: scaleX(-1) !important;
+  display: block !important;
+  flex-shrink: 0 !important;
 }
 
-/* --- CHAT SIDEBAR (Fixed Right) --- */
-.chatRoom {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  height: calc(100vh - 48px);
-  width: 28vw;
-  min-width: 300px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  z-index: 20;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+/* 3. PEER VIDEOS CONTAINER (Flattens so all videos share the same row/column wrap) */
+.conferenceView {
+  display: contents !important; /* Lets all inner video divs participate in the main grid */
 }
 
-.chatContainer {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+/* 4. EACH PEER VIDEO WRAPPER & VIDEO ELEMENT */
+.conferenceView > div {
+  width: 340px !important;
+  max-width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  display: block !important;
+  flex-shrink: 0 !important;
 }
 
-.chatContainer h2 {
-  font-size: 1.25rem;
-  font-family: system-ui, -apple-system, sans-serif;
-  color: #1e293b;
-  margin-bottom: 12px;
+.conferenceView video {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  background-color: #000000 !important;
+  border: 2px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+  display: block !important;
 }
 
-.chattingArea {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  gap: 8px;
-}
-
-.chatInput {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  outline: none;
-  font-size: 0.9rem;
-}
-
-.sendBtn {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* --- BOTTOM CONTROL BAR --- */
+/* 5. BOTTOM TOOLBAR (Always fixed at bottom center) */
 .buttonContainers {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: calc(100vw - 32vw); /* Aligned directly below video area */
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  background: rgba(1, 4, 48, 0.95);
-  z-index: 10;
+  position: fixed !important;
+  bottom: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  background: rgba(10, 16, 40, 0.92) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 8px 24px !important;
+  border-radius: 40px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  z-index: 99 !important;
+  width: max-content !important;
 }
 
 .buttonContainers svg {
-  font-size: 2.5rem;
-  cursor: pointer;
-  color: #ffffff;
+  font-size: 2rem !important;
+}
+
+/* 6. CHAT DRAWER (Desktop floating popup) */
+.chatRoom {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 320px !important;
+  max-width: calc(100vw - 32px) !important;
+  height: calc(100vh - 110px) !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 100 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE (Phones ≤ 600px)
+========================================================= */
+
+@media (max-width: 600px) {
+  .meetVideoContainer {
+    padding: 12px 12px 80px 12px !important;
+    gap: 12px !important;
+  }
+
+  /* Full-width responsive cards on mobile */
+  .meetUserVideo,
+  .conferenceView > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Mobile Bottom Sheet Chat */
+  .chatRoom {
+    top: auto !important;
+    bottom: 65px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 50vh !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+
+  .buttonContainers {
+    bottom: 8px !important;
+    gap: 8px !important;
+    padding: 6px 14px !important;
+  }
+
+  .buttonContainers svg {
+    font-size: 1.5rem !important;
+  }
 }

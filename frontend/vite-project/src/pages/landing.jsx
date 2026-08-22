@@ -1,60 +1,39 @@
-import React from 'react'
-import "../App.css"
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react';
+import "../App.css";
+import { Link, useNavigate } from 'react-router-dom';
+
 export default function LandingPage() {
+  const router = useNavigate();
 
-
-    const router = useNavigate();
-
-    return (
-        <div className='landingPageContainer'>
-            <nav>
-                <div className='navHeader'>
-                    <h2>NEXORA</h2>
-                </div>
-                <div className='navlist'>
-                     
-                    <p onClick={() => {
-                        router("/aljk23")
-                    }}>Join as Guest</p>
-                    <p onClick={() => {
-                        router("/auth")
-
-                    }}>Register</p>
-                    <div onClick={() => {
-                        router("/auth")
-
-                    }} role='button'>
-                        <p>Login</p>
-                    </div>
-                </div>
-            </nav>
-
-
-            <div className="landingMainContainer">
-                <div>
-                    <h1><span style={{ color: "#FF9839" }}>Connect</span> with your loved Ones</h1>
-
-                    <p>Cover a distance by NEXORA</p>
-                  <div className="heroButtons">
-    <div role="button" className="primaryBtn">
-        <Link to="/auth">Get Started</Link>
-    </div>
-
-    <div role="button" className="secondaryBtn">
-        <Link to="/about">About Me</Link>
-    </div>
-</div>
-                </div>
-                <div>
-
-                    <img src="/mobile.png" alt="" />
-
-                </div>
-            </div>
-
-
-
+  return (
+    <div className='landingPageContainer'>
+      <nav>
+        <div className='navHeader'>
+          <h2>NEXORA</h2>
         </div>
-    )
+        <div className='navlist'>
+          <p onClick={() => router("/aljk23")}>Join as Guest</p>
+          <p onClick={() => router("/auth")}>Register</p>
+          <button className='navAuthBtn' onClick={() => router("/auth")}>
+            Login
+          </button>
+        </div>
+      </nav>
+
+      <div className="landingMainContainer">
+        <div className="heroText">
+          <h1><span>Connect</span> with your loved Ones</h1>
+          <p>Cover a distance by NEXORA</p>
+          <div className="heroButtons">
+            <Link to="/auth" className="primaryBtn">Get Started</Link>
+            <Link to="/about" className="secondaryBtn">About Me</Link>
+          </div>
+        </div>
+
+        <div className="heroImage">
+          <img src="/mobile.png" alt="NEXORA App Preview" />
+        </div>
+      </div>
+    </div>
+  );
 }
