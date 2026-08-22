@@ -48,6 +48,14 @@ export default function About() {
             >
               GitHub
             </a>
+             <a
+              href="https://porfolio-jet-zeta.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btnPrimary"
+            >
+            Portfolio
+            </a>
            <a
   href="https://www.linkedin.com/in/shivam-singh-726997362"
   target="_blank"
