@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../App.css";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
   const router = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className='landingPageContainer'>
-      <nav>
-        <div className='navHeader'>
+      <nav className="navbar">
+        <div className="navHeader">
           <h2>NEXORA</h2>
         </div>
-        <div className='navlist'>
-          <p onClick={() => router("/aljk23")}>Join as Guest</p>
-          <p onClick={() => router("/auth")}>Register</p>
-          <button className='navAuthBtn' onClick={() => router("/auth")}>
+
+        {/* Simple 3-line icon */}
+        <div className="menuIcon" onClick={() => setIsOpen(!isOpen)}>
+          ☰
+        </div>
+
+        {/* Dropdown list */}
+        <div className={`navlist ${isOpen ? "open" : ""}`}>
+          <p onClick={() => { router("/aljk23"); setIsOpen(false); }}>Join as Guest</p>
+          <p onClick={() => { router("/auth"); setIsOpen(false); }}>Register</p>
+          <button className="navAuthBtn" onClick={() => { router("/auth"); setIsOpen(false); }}>
             Login
           </button>
         </div>
