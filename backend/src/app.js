@@ -24,7 +24,7 @@ app.use("/api/v1/users", userRoutes);
 const start = async () => {
     app.set("mongo_user")
 const connectionDb = await mongoose.connect(
-  "mongodb+srv://shivamsingh933434_db_user:bbIsDyRdDz2q7EQ8@cluster0.mxppsai.mongodb.net/?appName=Cluster0"
+  "mongodb+srv://shivamsingh933434_db_user:nexora1122@cluster0.mxppsai.mongodb.net/nexora?retryWrites=true&w=majority&appName=Cluster0"
 );
 
 console.log("Database connected successfully");
